@@ -10,9 +10,9 @@ Try the deployed app: [Task Manager Live Demo](https://hosted-task-manager-mayan
 
 Add the images as `screenshots/screenshot1.png` and `screenshots/screenshot2.png` in the project root to display them here.
 
-![Task Manager screenshot 1](screenshots/screenshot1.png)
+![Task Manager screenshot 1](screenshot/screenshot1.png)
 
-![Task Manager screenshot 2](screenshots/screenshot2.png)
+![Task Manager screenshot 2](screenshot/screenshot2.png)
 
 ## Features
 
