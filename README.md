@@ -1,93 +1,111 @@
 # Task Manager
 
-A simple full-stack CRUD app built with React, Express, and PostgreSQL. It lets you create, edit, delete, search, and filter tasks.
+A local full-stack task manager built with React, Express, and PostgreSQL.
 
 ## Features
-- **CRUD Operations:** Create, read, update, and delete tasks easily.
-- **Search & Filter:** Search by title or filter by status (All, Incomplete, Completed).
-- **Responsive UI:** Made with Bootstrap 5 for desktop and mobile view.
-- **Validation:** Built-in error and success indicators + validation alerts.
 
-## Project Structure
-```text
-backend/
-  database/ (database.sql & connection config)
-  routes/   (API endpoints)
-  server.js
-frontend/
-  src/      (React source files)
-```
+- Create, edit, complete, and delete tasks
+- Search tasks by title
+- Filter all, incomplete, or completed tasks
+- Combine search and status filters
+- Responsive Bootstrap layout
+- Validation and success/error notifications
 
 ## Requirements
-- Node.js 18+
-- PostgreSQL (Local or Supabase)
 
-## Local Setup
+- Node.js 18 or newer
+- PostgreSQL running locally
 
-### 1. Clone & Install
+## Project Structure
+
+```text
+backend/
+  database/
+    database.sql
+    db_con.js
+  routes/
+  server.js
+frontend/
+  src/
+```
+
+## Setup
+
+### 1. Create the database
+
+Create a PostgreSQL database named `task_manager`, then run:
+
+```text
+backend/database/database.sql
+```
+
+The current local connection uses:
+
+```text
+Host: localhost
+Port: 5432
+User: postgres
+Database: task_manager
+```
+
+Update the password in `backend/database/db_con.js` if your local PostgreSQL password is different.
+
+### 2. Install dependencies
+
+From the project root:
+
 ```bash
-git clone <your-github-repository-url>
-cd task-manager
+cd backend
+npm install
 
-# Install Backend
-cd backend && npm install
-
-# Install Frontend
-cd ../frontend && npm install
+cd ../frontend
+npm install
 ```
 
-### 2. Database Setup
-Run the script inside `backend/database/database.sql` on your PostgreSQL or Supabase SQL editor.
+### 3. Start the backend
 
-### 3. Environment Variables (.env)
-Create a `.env` file in both folders based on their templates.
+Open a terminal and run:
 
-**`backend/.env`**
-```env
-PORT=3000
-CLIENT_URL=http://localhost:5173
-DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DATABASE
-DATABASE_SSL=false # Set to true for Supabase/hosted DB
+```bash
+cd backend
+npm start
 ```
 
-**`frontend/.env`**
-```env
-VITE_API_URL=http://localhost:3000
+The API runs at `http://localhost:3000`.
+
+### 4. Start the frontend
+
+Open a second terminal and run:
+
+```bash
+cd frontend
+npm run dev
 ```
 
-### 4. Run the App
-Open two separate terminals:
-
-* **Terminal 1 (Backend):** `cd backend && npm start`
-* **Terminal 2 (Frontend):** `cd frontend && npm run dev`
-
-Go to `http://localhost:5173` to test the app.
+Open `http://localhost:5173` in your browser.
 
 ## API Endpoints
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
 | POST | `/api/tasks` | Create a task |
-| GET | `/api/tasks` | Get all tasks (supports query `?search=xx&status=xx`) |
-| GET | `/api/tasks/:id` | Get single task |
-| PUT | `/api/tasks/:id` | Update whole task |
-| PUT | `/api/tasks/complete/:id` | Toggle complete status |
+| GET | `/api/tasks` | List tasks |
+| GET | `/api/tasks?search=report&status=completed` | Search and filter tasks |
+| GET | `/api/tasks/:id` | Get one task |
+| PUT | `/api/tasks/:id` | Edit a task |
+| PUT | `/api/tasks/complete/:id` | Complete a task |
 | DELETE | `/api/tasks/:id` | Delete a task |
 
-*Note: Valid status values are `all`, `incomplete`, and `completed`.*
+Valid status values are `all`, `incomplete`, and `completed`.
 
-## Deployment Quick Guide
+## Checks
 
-### Database (Supabase)
-1. Spin up a new Supabase project and run `database.sql`.
-2. Copy your connection string from Settings > Database.
+Run the frontend checks before committing:
 
-### Backend (Railway)
-1. Deploy a new service from your GitHub repo.
-2. Root directory: `backend` | Start command: `npm start`.
-3. Add environment variables (`DATABASE_URL`, `DATABASE_SSL=true`, and `CLIENT_URL`).
+```bash
+cd frontend
+npm run lint
+npm run build
+```
 
-### Frontend (Vercel)
-1. Import your repo, set Root Directory to `frontend`.
-2. Framework preset: **Vite**.
-3. Add Environment Variable: `VITE_API_URL` (use your Railway app URL).
+This repository is currently configured for local development only.
