@@ -2,6 +2,18 @@
 
 A local full-stack task manager built with React, Express, and PostgreSQL.
 
+## Live Demo
+
+Try the deployed app: [Task Manager Live Demo](https://hosted-task-manager-mayan.vercel.app/)
+
+## Screenshots
+
+Add the images as `screenshots/screenshot1.png` and `screenshots/screenshot2.png` in the project root to display them here.
+
+![Task Manager screenshot 1](screenshots/screenshot1.png)
+
+![Task Manager screenshot 2](screenshots/screenshot2.png)
+
 ## Features
 
 - Create, edit, complete, and delete tasks
